@@ -1,4 +1,3 @@
--- You will experience severe FPS drops if you fill the shapes since i decided to draw each pixel on its own.
 local gui = Instance.new("ScreenGui")
 gui.Parent = game.CoreGui
 
@@ -40,6 +39,7 @@ local function drawCircle(properties)
     while x < y do
         if filled then
             for i = x, y do
+                task.wait(.1)
                 plot(center.X, center.Y, x, i)
                 plot(center.X, center.Y, i, x)
             end
@@ -221,51 +221,3 @@ function Drawing.new(shape, properties)
     end
     return self
 end
-
-
-
--- USAGE
-Drawing.new("circle", {
-    Radius = 50,
-    Color = Color3.fromRGB(255, 255, 255),
-    Filled = false,
-    Position = Vector2.new(50, 50),
-    Visible = true
-})
-
-Drawing.new("square", {
-    Size = 100,
-    Color = Color3.fromRGB(255, 255, 255),
-    Filled = false,
-    Position = Vector2.new(100, 50),
-    Visible = true
-})
-
-Drawing.new("triangle", {
-    Point1 = Vector2.new(225, 25),
-    Point2 = Vector2.new(275, 25),
-    Point3 = Vector2.new(250, 75),
-    Color = Color3.fromRGB(255, 255, 255),
-    Filled = false,
-    Visible = true
-})
-
-
-Drawing.new("text", {
-    Text = "incognito",
-    Position = Vector2.new(200, 400),
-    Color = Color3.fromRGB(255, 255, 255), 
-    FontSize = 24,
-    Visible = true
-})
-
-Drawing.new("quad", {
-    PointA = Vector2.new(200, 460),
-    PointB = Vector2.new(300, 400),
-    PointC = Vector2.new(370, 500),
-    PointD = Vector2.new(200, 590),
-    Color = Color3.fromRGB(255, 255, 255),
-    Filled = false,
-    Thickness = 1,
-    Visible = true
-})
